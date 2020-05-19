@@ -14,12 +14,17 @@ int insert(int value, std::vector<int> &table) {
   
   int hash = value % 1000;
   int count = 0;
-  
-  
+
   while(table[hash + count] != -1){
-    if(table[hash + count] == value) // check to see if value is already in the table
+    
+    /*if(table[hash + count] == value) // check to see if value is already in the table
       return count;
+    */
+    if(hash + count == 1000)
+      hash = -count - 1;
+      
     count++;  
+    
   }
     
   table[hash + count] = value;
