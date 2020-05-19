@@ -67,33 +67,32 @@ child exists, [null] is displayed.
 */
 
 void downHeap(Node *n) {
-  bool tempBool;
-  if (n->left && n->right)
-    tempBool = n->left->value > n->right->value;
-  else if (n->left)
-    tempBool = true;
-  else
-    tempBool = false;
-  int tempInt;
+  // Implement downHeap() here.
   
-  if(!n)
-    return;
-  else if (n->left && n->value > n->left->value && !tempBool)
-  {
-    tempInt = n->value;
-    n->value = n->left->value;
-    n->left->value = tempInt;
+  if(n->left) { 
+    if(n->value > n->left->value) {
+      // BL: child is larger so swap values
+      int temp = n->left->value;
+      n->left->value = n->value;
+      n->value = temp;
+      
+    } 
+    
     downHeap(n->left);
   }
-  else if (n->right && n->value > n->right->value && tempBool) {
-    tempInt = n->value;
-    n->value = n->right->value;
-    n->right->value = tempInt;
-    downHeap(n->right);
+  
+  if(n->right) { 
+    if(n->value > n->right->value) {
+      // BL: child is larger so swap values
+      int temp = n->right->value;
+      n->right->value = n->value;
+      n->value = temp;
+    } 
+    
+    downHeap(n->right);  
   }
-  else
-    return;
 }
+
 
 // You can also use this compact printing function for debugging.
 void printTree(Node *n) {
